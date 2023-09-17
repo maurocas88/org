@@ -6,23 +6,26 @@ import Boton from "../Boton"
 
 const Formulario = (props)=>{
 
-    const envioDeDatos=(e)=>{
-        e.preventDefault();
-//le Damos uso a la funcionalidad de estados armando un objeto que podemos enviar:
-    const datosAEnviar ={
-        Nombre,
-        Puesto,
-        Foto,
-        equipo
-    }        
-    console.log (datosAEnviar);
-    }
-
-    const [Nombre,setNombre] = useState("");
-    const [Puesto,setPuesto] = useState("");
-    const [Foto,setFoto] = useState("");
+    const [nombre,setNombre] = useState("");
+    const [puesto,setPuesto] = useState("");
+    const [foto,setFoto] = useState("");
     const [equipo,setEquipo] = useState ("");
   
+const {registrarColaborador}=props
+
+const envioDeDatos=(e)=>{
+    e.preventDefault();
+    //le Damos uso a la funcionalidad de estados armando un objeto que podemos enviar:
+    const datosAEnviar ={
+        nombre,
+        puesto,
+        foto,
+        equipo,
+    }        
+    registrarColaborador (datosAEnviar);
+}
+
+
     return <section className="formulario">
         <form onSubmit={envioDeDatos}>
             <h2>Rellena el formulario para crear el colaborador</h2>
@@ -30,14 +33,14 @@ const Formulario = (props)=>{
                 titulo="Nombre" 
                 placeholder="Ingresar Nombre" 
                 required 
-                valor={Nombre} 
+                valor={nombre} 
                 changeValor={setNombre}
             />
             <Campostexto 
                 titulo="Puesto" 
                 placeholder="Ingresar Puesto" 
                 required
-                valor={Puesto} 
+                valor={puesto} 
                 changeValor={setPuesto}
             />
 
@@ -45,7 +48,7 @@ const Formulario = (props)=>{
                 titulo="Foto" 
                 placeholder="Ingresar enlace de foto" 
                 required
-                valor={Foto} 
+                valor={foto} 
                 changeValor={setFoto}
             />
 

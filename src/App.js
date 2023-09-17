@@ -9,11 +9,22 @@ import Equipos from './Components/Equipos';
 function App() {
 
   const [formView, switchView]=useState(false);    
+  const [colaboradores, actualizarColaboradores] =useState([]);
   
   const cambiarMostrar = ()=>{
-    switchView(!formView);
+      switchView(!formView);
   }
 
+
+  //Registrar Colaborador
+  const registrarColaborador= (colaborador)=>{
+    console.log("Nuevo colaborador ", colaborador)
+    actualizarColaboradores([...colaboradores,colaborador]);
+
+  }
+
+
+  //Lista equipos
     const equipos=[
       {
         titulo:"Programación",
@@ -55,20 +66,23 @@ function App() {
   return (
     <div>
       <Header_RC/>
-      {formView && <Formulario equipos={equipos.map((equipo)=>equipo.titulo)}/>}
+      {
+        formView && <Formulario 
+        equipos={equipos.map((equipo)=>equipo.titulo)}
+        registrarColaborador={registrarColaborador}
+        />
+      }
+
       <MiOrg cambiarMostrar={cambiarMostrar}/>
 
       {
-        equipos.map( (equipo,index)=> <Equipos key={index} datos={equipo}/>)
+        equipos.map( (equipo)=> <Equipos 
+          key={equipo.titulo} 
+          datos={equipo} 
+          colaboradores={colaboradores.filter(colaborador =>colaborador.equipo===equipo.titulo)}
+        />)
       }
 
-      {/* <Equipos equipo="Programación"/>
-      <Equipos equipo="Front End"/>
-      <Equipos equipo="Data Science"/>
-      <Equipos equipo="Devops"/>
-      <Equipos equipo="UX y Diseño"/>
-      <Equipos equipo="Móvil"/>
-      <Equipos equipo="Innovación y Gestión"/> */}
       </div>
   );
 }
