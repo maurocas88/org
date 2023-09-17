@@ -5,6 +5,7 @@ import Header_RC from './Components/header_C/Header';
 import Formulario from './Components/Formulario/Formulario';
 import MiOrg from './Components/MiOrg';
 import Equipos from './Components/Equipos';
+import Footer from './Components/Footer';
 
 function App() {
 
@@ -82,6 +83,8 @@ function App() {
           colaboradores={colaboradores.filter(colaborador =>colaborador.equipo===equipo.titulo)}
         />)
       }
+
+      <Footer />
 
       </div>
   );
