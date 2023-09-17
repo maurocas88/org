@@ -12,13 +12,16 @@ const Formulario = ()=>{
     const datosAEnviar ={
         Nombre,
         Puesto,
-        Foto
+        Foto,
+        equipo
     }        
+    console.log (datosAEnviar);
     }
 
     const [Nombre,setNombre] = useState("");
     const [Puesto,setPuesto] = useState("");
     const [Foto,setFoto] = useState("");
+    const [equipo,setEquipo] = useState ("");
   
     return <section className="formulario">
         <form onSubmit={envioDeDatos}>
@@ -46,7 +49,10 @@ const Formulario = ()=>{
                 changeValor={setFoto}
             />
 
-            <ListaOpciones />
+            <ListaOpciones 
+                valor={equipo} 
+                setEquipo = {setEquipo} 
+            />
             <Boton texto="Crear"/>      {/* Esto pasa el dato mediante props.. => props.texto  */}
             {/* sin embargo se puede hacer con props.children haciendo: */}
             {/* <Boton>texto Crear</Boton>, el dato se saca de props.children */}
