@@ -55,7 +55,7 @@ function App() {
   return (
     <div>
       <Header_RC/>
-      {formView && <Formulario />}
+      {formView && <Formulario equipos={equipos.map((equipo)=>equipo.titulo)}/>}
       <MiOrg cambiarMostrar={cambiarMostrar}/>
 
       {

@@ -4,7 +4,7 @@ import Campostexto from "../CamposTexto/CamposTexto"
 import ListaOpciones from "../ListaOpciones"
 import Boton from "../Boton"
 
-const Formulario = ()=>{
+const Formulario = (props)=>{
 
     const envioDeDatos=(e)=>{
         e.preventDefault();
@@ -50,6 +50,7 @@ const Formulario = ()=>{
             />
 
             <ListaOpciones 
+                equipos={props.equipos}
                 valor={equipo} 
                 setEquipo = {setEquipo} 
             />
