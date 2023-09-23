@@ -6,7 +6,14 @@
     text-align: center;
     font-size: 32px;
     margin: 50px 0;
+    position: relative;
     
+}
+
+.colorFondo{
+    position: absolute;
+    top: 20px;
+    right: 50px;
 }
 
 .equipo h3{

@@ -10,23 +10,50 @@ import Footer from './Components/Footer';
 function App() {
 
   const [formView, switchView]=useState(false);    
-  const [colaboradores, actualizarColaboradores] =useState([]);
-  
-  const cambiarMostrar = ()=>{
-      switchView(!formView);
-  }
+  const [colaboradores, actualizarColaboradores] =useState([
+    {
+      nombre:"mauro",
+      puesto:"j",
+      foto:"https://github.com/maurocas88.png",
+      equipo:"Programación"
+    },    
+    {
+      nombre:"jose",
+      puesto:"j",
+      foto:"https://github.com/JoseDarioGonzalezCha.png",
+      equipo:"Mobile"
+
+    },    
+    {
+      nombre:"jose",
+      puesto:"j",
+      foto:"https://github.com/JoseDarioGonzalezCha.png",
+      equipo:"Programación"
+
+    },    
+    {
+      nombre:"Jeanmarie",
+      puesto:"j",
+      foto:"https://github.com/JeanmarieAluraLatam.png",
+      equipo:"UX y Diseño"
+    },   
+    {
+      nombre:"Cristian",
+      puesto:"",
+      foto:"https://github.com/christianpva.png",
+      equipo:"Devops"
+    },    
+    {
+      nombre:"Harland",
+      puesto:"j",
+      foto:"https://github.com/harlandlohora.png",
+      equipo:"Front End"
+    },        
 
 
-  //Registrar Colaborador
-  const registrarColaborador= (colaborador)=>{
-    console.log("Nuevo colaborador ", colaborador)
-    actualizarColaboradores([...colaboradores,colaborador]);
-
-  }
-
-
-  //Lista equipos
-    const equipos=[
+  ]);
+    //Lista equipos
+  const [equipos,actualizarEquipos] = useState([
       {
         titulo:"Programación",
         colorPrimario:"#57C278",
@@ -63,6 +90,34 @@ function App() {
         colorSecundario:"#FFEEDF",
       }        
     ]
+  );
+  const cambiarMostrar = ()=>{
+      switchView(!formView);
+  }
+
+  //Borrar colaborador
+  const borrarColaborador = (borraColaborador)=>{
+      const borrado=colaboradores.filter(colaboradorB => colaboradorB.nombre!=borraColaborador);
+      actualizarColaboradores(borrado);
+    }
+  
+
+  //Registrar Colaborador
+  const registrarColaborador= (colaborador)=>{
+    // console.log("Nuevo colaborador ", colaborador)
+    actualizarColaboradores([...colaboradores,colaborador]);
+
+  }
+
+  //Cambiar Color
+  const cambiarColor = (tituloEq, colorNuevo)=>{
+    const equiposActualizados = equipos.map( (equipo)=> { 
+      if(equipo.titulo===tituloEq){equipo.colorSecundario = colorNuevo;};
+      return equipo;
+    })
+    actualizarEquipos(equiposActualizados);
+  }
+
 
   return (
     <div>
@@ -81,6 +136,9 @@ function App() {
           key={equipo.titulo} 
           datos={equipo} 
           colaboradores={colaboradores.filter(colaborador =>colaborador.equipo===equipo.titulo)}
+          borrarColaborador={borrarColaborador}
+          cambiarColor={cambiarColor}
+
         />)
       }
 
