@@ -3,6 +3,7 @@ import "./Formulario.css"
 import Campostexto from "../CamposTexto/CamposTexto"
 import ListaOpciones from "../ListaOpciones"
 import Boton from "../Boton"
+import { v4 as uuid } from "uuid";
 
 const Formulario = (props)=>{
 
@@ -12,11 +13,12 @@ const Formulario = (props)=>{
     const [equipo,setEquipo] = useState ("");
   
 const {registrarColaborador}=props
-
+const id= uuid();
 const envioDeDatos=(e)=>{
     e.preventDefault();
     //le Damos uso a la funcionalidad de estados armando un objeto que podemos enviar:
     const datosAEnviar ={
+        id,
         nombre,
         puesto,
         foto,
