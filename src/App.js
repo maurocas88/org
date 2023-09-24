@@ -111,8 +111,8 @@ function App() {
   }
 
   //Borrar colaborador
-  const borrarColaborador = (borraColaborador)=>{
-      const borrado=colaboradores.filter(colaboradorB => colaboradorB.id!=borraColaborador);
+  const borrarColaborador = (idBorrar)=>{
+      const borrado=colaboradores.filter((colaboradorB) => colaboradorB.id!==idBorrar);
       actualizarColaboradores(borrado);
     }
   
