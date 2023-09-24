@@ -105,6 +105,7 @@ function App() {
       }        
     ]
   );
+  
 
   const cambiarMostrar = ()=>{
       switchView(!formView);
@@ -133,6 +134,12 @@ function App() {
     actualizarEquipos(equiposActualizados);
   }
 
+  //Agregar nuevos equipos
+  const agregarEquipos = (nuevoEquipo) => {
+    const equipoagregado= [...equipos,nuevoEquipo];
+    actualizarEquipos(equipoagregado);
+
+  }
 
   return (
     <div>
@@ -141,6 +148,7 @@ function App() {
         formView && <Formulario 
         equipos={equipos.map((equipo)=>equipo.titulo)}
         registrarColaborador={registrarColaborador}
+        agregarEquipos={agregarEquipos}
         />
       }
 

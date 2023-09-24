@@ -11,20 +11,33 @@ const Formulario = (props)=>{
     const [puesto,setPuesto] = useState("");
     const [foto,setFoto] = useState("");
     const [equipo,setEquipo] = useState ("");
+    const [nuevoEquipo,setnuevoEquipo] = useState ("");
+    const [nuevoColor,setnuevoColor] = useState ("#000000");
   
-const {registrarColaborador}=props
-const id= uuid();
+const {registrarColaborador,agregarEquipos}=props
+// const id= uuid();
 const envioDeDatos=(e)=>{
     e.preventDefault();
     //le Damos uso a la funcionalidad de estados armando un objeto que podemos enviar:
     const datosAEnviar ={
-        id,
+        id:uuid(),
         nombre,
         puesto,
         foto,
         equipo,
     }        
     registrarColaborador (datosAEnviar);
+}
+const envioNuevoEquipo=(e)=>{
+    e.preventDefault();
+    //le Damos uso a la funcionalidad de estados armando un objeto que podemos enviar:
+    const equipoAEnviar ={
+        id:uuid(),
+        titulo:nuevoEquipo,
+        colorPirmario:"#fff",
+        colorSecundario:nuevoColor
+    }        
+    agregarEquipos (equipoAEnviar);
 }
 
 
@@ -63,6 +76,34 @@ const envioDeDatos=(e)=>{
             {/* sin embargo se puede hacer con props.children haciendo: */}
             {/* <Boton>texto Crear</Boton>, el dato se saca de props.children */}
         </form>
+        <form onSubmit={envioNuevoEquipo}>
+            <h2>Crear un Nuevo Equipo</h2>
+            <Campostexto 
+                titulo="Equipo" 
+                placeholder="Ingrese el nuevo equipo" 
+                required 
+                valor={nuevoEquipo} 
+                changeValor={setnuevoEquipo}
+            />
+            
+            <Campostexto 
+                titulo="Color" 
+                placeholder="Seleccionar Color" 
+                className="textoNEquipo"
+                required
+                valor={nuevoColor} 
+                changeValor={setnuevoColor}
+            />
+             <input 
+                    type="color"
+                    className="colorNEquipo"
+                    value= {nuevoColor}
+                    onChange={(evento)=>{setnuevoColor(evento.target.value)}}
+                    
+                /> 
+            <Boton texto="Crear Equipo"/> 
+        </form>
+
     </section>
 }
 
