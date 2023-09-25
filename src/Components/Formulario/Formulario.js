@@ -90,7 +90,7 @@ const envioNuevoEquipo=(e)=>{
             />
             
             <Campostexto 
-                titulo="Color" 
+                titulo="Color Primario" 
                 placeholder="Seleccionar Color" 
                 className="textoNEquipo"
                 required

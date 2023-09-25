@@ -18,14 +18,16 @@ function App() {
       nombre:"mauro",
       puesto:"j",
       foto:"https://github.com/maurocas88.png",
-      equipo:"Programación"
+      equipo:"Programación",
+      fav:true
     },    
     {
       id: uuid(),
       nombre:"jose",
       puesto:"j",
       foto:"https://github.com/JoseDarioGonzalezCha.png",
-      equipo:"Mobile"
+      equipo:"Mobile",
+      fav:false
 
     },    
     {
@@ -33,7 +35,8 @@ function App() {
       nombre:"jose",
       puesto:"j",
       foto:"https://github.com/JoseDarioGonzalezCha.png",
-      equipo:"Programación"
+      equipo:"Programación",
+      fav:false
 
     },    
     {
@@ -41,21 +44,24 @@ function App() {
       nombre:"Jeanmarie",
       puesto:"j",
       foto:"https://github.com/JeanmarieAluraLatam.png",
-      equipo:"UX y Diseño"
+      equipo:"UX y Diseño",
+      fav:false
     },   
     {
       id: uuid(),
       nombre:"Cristian",
       puesto:"",
       foto:"https://github.com/christianpva.png",
-      equipo:"Devops"
+      equipo:"Devops",
+      fav:false
     },    
     {
       id: uuid(),
       nombre:"Harland",
       puesto:"j",
       foto:"https://github.com/harlandlohora.png",
-      equipo:"Front End"
+      equipo:"Front End",
+      fav:false
     },        
 
 
@@ -108,6 +114,7 @@ function App() {
   );
   
 
+
   const cambiarMostrar = ()=>{
       switchView(!formView);
   }
@@ -145,6 +152,20 @@ function App() {
 
   }
 
+  //Like
+  const like = (id)=>{
+    console.log ("LIKE ",id);
+    const likear = colaboradores.map((colaborador)=>{
+      if (colaborador.id==id){
+        colaborador.fav = !colaborador.fav;
+        console.log ("LIKE ",id,colaborador.fav); 
+      }
+      return colaborador;
+    })
+    actualizarColaboradores (likear);
+
+  }
+
   return (
     <div>
       <Header_RC/>
@@ -165,6 +186,7 @@ function App() {
           colaboradores={colaboradores.filter(colaborador =>colaborador.equipo===equipo.titulo)}
           borrarColaborador={borrarColaborador}
           cambiarColor={cambiarColor}
+          like={like}
 
         />)
       }

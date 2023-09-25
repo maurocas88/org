@@ -6,7 +6,7 @@ const Equipos = (props)=> {
     //Destructuracion
     const{titulo, colorPrimario, colorSecundario,id}=props.datos;
     const estiloTitulo = {borderColor: colorPrimario};
-    const {colaboradores, borrarColaborador, cambiarColor} = props;
+    const {colaboradores, borrarColaborador, cambiarColor,like} = props;
 
     return <>
         { 
@@ -27,6 +27,7 @@ const Equipos = (props)=> {
                     datos={colaborador} 
                     key={index}
                     borrarColaborador={borrarColaborador}
+                    like={like}
                     />)
                     }
 
