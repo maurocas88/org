@@ -4,6 +4,7 @@ import Campostexto from "../CamposTexto/CamposTexto"
 import ListaOpciones from "../ListaOpciones"
 import Boton from "../Boton"
 import { v4 as uuid } from "uuid";
+import hexToRgba from "hex-to-rgba";
 
 const Formulario = (props)=>{
 
@@ -12,7 +13,7 @@ const Formulario = (props)=>{
     const [foto,setFoto] = useState("");
     const [equipo,setEquipo] = useState ("");
     const [nuevoEquipo,setnuevoEquipo] = useState ("");
-    const [nuevoColor,setnuevoColor] = useState ("#000000");
+    const [nuevoColor,setnuevoColor] = useState ("");
   
 const {registrarColaborador,agregarEquipos}=props
 // const id= uuid();
@@ -34,8 +35,8 @@ const envioNuevoEquipo=(e)=>{
     const equipoAEnviar ={
         id:uuid(),
         titulo:nuevoEquipo,
-        colorPirmario:"#fff",
-        colorSecundario:nuevoColor
+        colorPirmario: nuevoColor,
+        colorSecundario: hexToRgba(nuevoColor,0.25)
     }        
     agregarEquipos (equipoAEnviar);
 }
@@ -76,6 +77,8 @@ const envioNuevoEquipo=(e)=>{
             {/* sin embargo se puede hacer con props.children haciendo: */}
             {/* <Boton>texto Crear</Boton>, el dato se saca de props.children */}
         </form>
+
+
         <form onSubmit={envioNuevoEquipo}>
             <h2>Crear un Nuevo Equipo</h2>
             <Campostexto 

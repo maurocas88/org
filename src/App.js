@@ -7,6 +7,7 @@ import MiOrg from './Components/MiOrg';
 import Equipos from './Components/Equipos';
 import Footer from './Components/Footer';
 import { v4 as uuid } from "uuid";
+import hexToRgba from 'hex-to-rgba';
 
 function App() {
 
@@ -128,7 +129,10 @@ function App() {
   //Cambiar Color
   const cambiarColor = (idEq, colorNuevo)=>{
     const equiposActualizados = equipos.map( (equipo)=> { 
-      if(equipo.id===idEq){equipo.colorSecundario = colorNuevo;};
+      if(equipo.id===idEq){
+        equipo.colorPrimario = colorNuevo;
+        equipo.colorSecundario = hexToRgba(colorNuevo,0.25);
+      };
       return equipo;
     })
     actualizarEquipos(equiposActualizados);
